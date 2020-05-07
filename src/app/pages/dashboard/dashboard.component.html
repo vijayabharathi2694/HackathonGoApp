@@ -1,0 +1,178 @@
+<!-- <div class="row">
+  <div class="col-xxxl-3 col-md-6" *ngFor="let statusCard of statusCards">
+    <ngx-status-card [title]="statusCard.title" [type]="statusCard.type">
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-temperature></ngx-temperature>
+  </div>
+
+  <div class="col-xxxl-9 col-xxl-8 col-lg-7 col-md-6">
+    <ngx-electricity></ngx-electricity>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xxxl-9 col-xl-12">
+    <ngx-rooms></ngx-rooms>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-7 col-md-6">
+    <ngx-contacts></ngx-contacts>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-solar [chartValue]="solarValue"></ngx-solar>
+
+    <ngx-kitten></ngx-kitten>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-md-5">
+    <ngx-traffic></ngx-traffic>
+    <ngx-weather></ngx-weather>
+  </div>
+
+  <div class="col-xxxl-6 col-xxl-12 col-md-7">
+    <ngx-security-cameras></ngx-security-cameras>
+  </div>
+</div> -->
+
+
+  <h2  *ngIf="!showAdd" style="margin: auto">Interview Register</h2>
+  <br>
+  <div *ngIf="!showAdd">
+  <button class="btn btn-primary" (click)="onAdd()" > Add Candidate</button>
+  <br>
+  <br>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">S.No</th>
+      <th>Name</th>
+      <th>Mobile Number</th>
+      <th>Age</th>
+      <th>ID proof</th>
+      <th>Address</th>
+      <th>In Time</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- <tr *ngFor="let user of users"> -->
+      <tr *ngIf="showDelete">
+      <td class="hidden">1</td>
+      <td>Vijaya Bharathi</td>
+      <td>995456554</td>
+      <td>25</td>
+      <td>PAN</td>
+      <td>#8, Zion Street, Chennai</td>
+      <td>9.00 AM</td>
+      <td><button class="btn btn-danger"  style="margin-left: 20px;" (click)="deleteRow()">OUT</button></td>
+    </tr>
+    <tr>
+      <td class="hidden">2</td>
+      <td>Arun Kumar</td>
+      <td>995456554</td>
+      <td>25</td>
+      <td>PAN</td>
+      <td>#8, Zion Street, Chennai</td>
+      <td>9.00 AM</td>
+      <td><button class="btn btn-danger"  style="margin-left: 20px;">OUT</button></td>
+    </tr>
+    <tr>
+      <td class="hidden">3</td>
+      <td>Keerthi</td>
+      <td>995456554</td>
+      <td>25</td>
+      <td>PAN</td>
+      <td>#8, Zion Street, Chennai</td>
+      <td>9.00 AM</td>
+      <td><button class="btn btn-danger"  style="margin-left: 20px;">OUT</button></td>
+    </tr>
+    <tr>
+      <td class="hidden">4</td>
+      <td>Sukanya</td>
+      <td>995456554</td>
+      <td>25</td>
+      <td>PAN</td>
+      <td>#8, Zion Street, Chennai</td>
+      <td>9.00 AM</td>
+      <td><button class="btn btn-danger"  style="margin-left: 20px;">OUT</button></td>
+    </tr>
+    <tr>
+      <td class="hidden">5</td>
+      <td>Mano</td>
+      <td>995456554</td>
+      <td>25</td>
+      <td>PAN</td>
+      <td>#8, Zion Street, Chennai</td>
+      <td>9.00 AM</td>
+      <td><button class="btn btn-danger"  style="margin-left: 20px;">OUT</button></td>
+    </tr>
+    <tr>
+      <td class="hidden">6</td>
+      <td>Mark</td>
+      <td>995456554</td>
+      <td>25</td>
+      <td>PAN</td>
+      <td>#8, Zion Street, Chennai</td>
+      <td>9.00 AM</td>
+      <td>
+        <button class="btn btn-danger"  style="margin-left: 20px;">OUT</button></td>
+    </tr>
+    <tr *ngIf="showrow">
+      <td class="hidden">7</td>
+      <td>Anand</td>
+      <td>9940536138</td>
+      <td>25</td>
+      <td>PAN</td>
+      <td>chennai</td>
+      <td>9.00 AM</td>
+      <td>
+        <button class="btn btn-danger"  style="margin-left: 20px;">OUT</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="showAdd">
+  <div class="col-md-6 user-container">
+    <h2 class="text-left">Add Candidate</h2>
+    <br>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Name:</label>
+        <input type="text" formControlName="username" name="username" class="form-control" id="username">
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Mobile Number:</label>
+        <input type="text" formControlName="password"  name="password" class="form-control" id="password">
+      </div>
+  
+      <div class="form-group">
+        <label for="firstName">Age:</label>
+        <input type="number" formControlName="firstName" name="firstName" class="form-control" id="firstName">
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">ID Proof:</label>
+        <input type="text" formControlName="lastName"  name="lastName" class="form-control" id="lastName">
+      </div>
+  
+      <div class="form-group">
+        <label for="age">Address:</label>
+        <input type="text" formControlName="age" name="age" class="form-control" id="age">
+      </div>
+  
+      <div class="form-group">
+        <label for="salary">In Time:</label>
+        <input type="text" formControlName="salary"  name="salary" class="form-control" id="salary">
+      </div>
+  
+      <button class="btn btn-success" (click)="newCandidate()">Add</button>
+    </form>
+  </div></div>
