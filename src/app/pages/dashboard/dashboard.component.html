@@ -46,9 +46,22 @@
   <br>
   <div *ngIf="!showAdd">
   <button class="btn btn-primary" (click)="onAdd()" > Add Candidate</button>
+  <div class= "row">
+    
+  <div style="padding-left: 750px;">
+    <input type="date" placeholder="Date Range Filter"class="form-control" 
+    bsDaterangepicker
+     /></div>
+    
+    <div style="padding-left: 30px;" class="form-group col-xs-3">
+  <button class="btn btn-success" (click)="exportToExcel()">Apply</button>
+    </div>
+    <mat-datepicker-toggle ></mat-datepicker-toggle>
+    <mat-datepicker></mat-datepicker>
+</div>
   <br>
   <br>
-  <table class="table table-striped">
+  <table class="table table-striped" id="excel-table">
     <thead>
     <tr>
       <th class="hidden">S.No</th>

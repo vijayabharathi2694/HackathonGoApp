@@ -3,6 +3,7 @@ import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { SolarData } from '../../@core/data/solar';
 import { Router } from '@angular/router';
+import * as XLSX from 'xlsx';
 
 interface CardSettings {
   title: string;
@@ -21,6 +22,7 @@ export class DashboardComponent implements OnDestroy {
   showAdd = false;
   showrow = false;
   showDelete = true;
+  fileName= 'Interview_List.xlsx'
 
   solarValue: number;
   lightCard: CardSettings = {
@@ -119,4 +121,20 @@ export class DashboardComponent implements OnDestroy {
   {
     this.showDelete =  false;
   }
+  exportToExcel(): void 
+  {
+     /* table id is passed over here */   
+     console.log("here in excel func");
+     let element = document.getElementById('excel-table'); 
+     const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+     /* generate workbook and add the worksheet */
+     const wb: XLSX.WorkBook = XLSX.utils.book_new();
+     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+     /* save to file */
+     XLSX.writeFile(wb, this.fileName);
+    
+  }
+
 }
